@@ -28,7 +28,8 @@ class bodySpider(scrapy.spiders.Spider):
         for tag in tags:
             tag_name = tag.xpath("local-name()")[0].extract()
             if tag_name == 'h2':
-                result.append(self.item_parse(content_list, head_2, head_3))
+                if len(content_list) != 0:
+                    result.append(self.item_parse(content_list, head_2, head_3))
                 content_list.clear()
                 head_2 = tag.xpath("./span[@class='mw-headline']/text()")[0].extract()
                 head_3 = ""

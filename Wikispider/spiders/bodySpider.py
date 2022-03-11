@@ -50,8 +50,8 @@ class bodySpider(scrapy.spiders.Spider):
     def item_parse(self, content_list, head_2, head_3):
         empty_split = ""
         if len(head_3) != 0:
-            return {"h2": head_2, "h3": head_3, "content": empty_split.join(content_list)}
+            return {"h2": head_2, "h3": head_3, "content": empty_split.join(content_list).replace("\n", "")}
         else:
-            return {"h2": head_2, "content": empty_split.join(content_list)}
+            return {"h2": head_2, "content": empty_split.join(content_list).replace("\n", "")}
 
 
